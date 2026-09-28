@@ -20,6 +20,7 @@ All decisions below were confirmed during the 2026-09-12 Grill Me review.
 | D014 | Report training-priority ranking, not causal ROI | Training cost, intervention assignment, and causal counterfactuals are unavailable. | Confirmed |
 | D015 | Adopt the explicit exit gate in `PROJECT_CONTEXT.md` | If no stable signal or baseline improvement remains, revise the question or switch dataset. | Confirmed |
 | D016 | Project status is Go | All Grill Me questions were accepted; proceed to reproducible EDA and analysis. | Confirmed |
+| D017 | Implement the reproducible analysis in R | The course's statistical topics (descriptive/inferential statistics, hypothesis testing, linear regression) map directly to base R and to transparent diagnostics; `renv` plus scripts keep the pipeline reproducible. The full method mapping is in `docs/ANALYSIS_PLAN_R.md`. | Confirmed |
 
 ## Decisions to revisit only with evidence
 
