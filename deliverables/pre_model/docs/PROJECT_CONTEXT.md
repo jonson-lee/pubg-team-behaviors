@@ -1,0 +1,25 @@
+# 建模前审阅约定
+
+更新日期：2026-10-13（Asia/Shanghai）。完整分析协议见 [Proposal.md](../reports/Proposal.md)。
+
+## 范围与单位
+
+Final Circle 的 IBA6101 项目研究 `solo-fpp` 赛后行为与最终名次的关联。分析单位为玩家比赛记录；组键为 `(matchId, groupId)`，聚类与抽样单位为比赛。
+
+响应为 `winPlacePerc`；战斗变量为 `kills`、`damageDealt`；移动补给变量为 `walkDistance`、`boosts`、`heals`；上下文为 `numGroups`。
+
+赛后累计行为受存活时长影响，结论限制为关联。记录 `Id` 不能确认跨比赛的真实玩家身份；三变量与两变量的比较只适用于指定变量组。
+
+## 重要方法选择
+
+| 选择 | 理由 |
+| --- | --- |
+| 限定 Solo-FPP | 与当前提案一致，减少不同模式的差异。 |
+| 保留有效多记录组及异常候选 | 共享名次不自动视为重复错误，极端行为不凭大小自动删除。 |
+| 原尺度 OLS 为主方案；组等权 WLS 作敏感性检查 | 同组多记录可能影响点估计权重，聚类标准误不能消除这种权重差异。 |
+| 按比赛聚类推断、整场抽样和划分 | 避免把同场记录当独立样本，避免同场跨训练与留出集合。 |
+| 四模型使用相同记录 | 让解释增量比较针对相同样本。 |
+| H3 配对整场 bootstrap | 两组变量在相同重抽样记录上比较。 |
+| 行为变量使用 log1p 作敏感性检查 | 保留零值并检查函数形式；保留预定主方案。 |
+
+数据来源见 [pubg_source.md](../data/meta/pubg_source.md)，准备审计见 [PREPARATION_REPORT.md](PREPARATION_REPORT.md)。本次范围与文件校验见包根目录的 `package_manifest.json`。
