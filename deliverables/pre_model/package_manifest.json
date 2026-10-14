@@ -1,0 +1,114 @@
+{
+  "export_date": "2026-10-14",
+  "timezone": "Asia/Shanghai",
+  "deliverable_scope": "research design, data preparation review and PUBG study dataset",
+  "chronology_note": "An export of design/preparation materials from a project with a local first-pass analysis; not a preregistration and not a model-results release.",
+  "mode": "solo-fpp",
+  "source": {
+    "path": "data/raw/pubg/train_V2.csv",
+    "sha256": "435a78193a0ad2e9aaa7f0cfffa22a8317b320aee81fdd44235e1b37afd28d36"
+  },
+  "sampling": {
+    "sample_size_matches": 200,
+    "sample_seed": 6101,
+    "split_seed": 6102,
+    "rng_kind": {
+      "kind": "Mersenne-Twister",
+      "normal_kind": "Inversion",
+      "sample_kind": "Rejection"
+    },
+    "input_match_order": "sort unique valid matchId using radix order",
+    "train_matches": 160,
+    "test_matches": 40,
+    "records": 18935,
+    "train_records": 15204,
+    "test_records": 3731,
+    "n_match_group_pairs": 18470,
+    "weighting_rule": "group_weight = 1 / number of retained records in the same (matchId, groupId)",
+    "sampling_unit": "whole match; every eligible record in a selected match is retained",
+    "output_record_order": "matchId, groupId, Id"
+  },
+  "software": {
+    "R": "R version 4.4.2 (2024-10-31)",
+    "data_table": "1.16.2",
+    "jsonlite": "1.8.9"
+  },
+  "public_redactions": [
+    "team member names and student IDs",
+    "excluded-record identifier details"
+  ],
+  "excluded_artifacts": [
+    "raw data",
+    "historical submitted PDFs",
+    "model implementation",
+    "model result tables and figures"
+  ],
+  "files": {
+    ".gitignore": {
+      "bytes": 66,
+      "sha256": "61aaec98b64b5140d58f316ec1274eafa52daffae44e38851f968748d28daae7"
+    },
+    "README.md": {
+      "bytes": 2008,
+      "sha256": "49ecdb88ab4bdf31e1622f42cd500fc54dba9ca860848533ecd1568b1ace07f7"
+    },
+    "code/prepare_data.R": {
+      "bytes": 18240,
+      "sha256": "215cdd22e16fdd8ec68544c20bf439f08c28182c04774bb27d9adbbd0f421e7a"
+    },
+    "code/run_preparation.R": {
+      "bytes": 1432,
+      "sha256": "14af44f35f1110463cb228b2d78cdacbd92d4527accc6eed6e61b640752ce55a"
+    },
+    "code/tests/test_preparation.R": {
+      "bytes": 18663,
+      "sha256": "bf5ddd1a16625ee9a2faab8c82714190c0bfdfc2b7bb6f2eababe880bf35c8b7"
+    },
+    "data/meta/pubg_source.md": {
+      "bytes": 3985,
+      "sha256": "0cf08ea5c0ea825d2b65a88145356b70c9d80b240a47e745f9342a277e4a635e"
+    },
+    "data/processed/data_audit.json": {
+      "bytes": 3301,
+      "sha256": "4f36920ab32a9108320c7e86581e4c862bf19adc96d94a6d3ea061459e82331c"
+    },
+    "data/processed/pubg_sample.csv": {
+      "bytes": 2108126,
+      "sha256": "9a42ab4c47e2ed07cd95fe5035be577027fb3ae7cfdfd847d2cb7f2f038e048c"
+    },
+    "data/processed/selected_matches.csv": {
+      "bytes": 5588,
+      "sha256": "04699ba2baa8b89a017fb2c2558e50fdea55e076557ea5a145633d4b68d730df"
+    },
+    "docs/DATA_DICTIONARY.md": {
+      "bytes": 1827,
+      "sha256": "7d8ac1603d2061184e5e528ec4f7ff9e16b5f7b9c5402bca89ab8e15080d0fda"
+    },
+    "docs/PREPARATION_REPORT.md": {
+      "bytes": 2937,
+      "sha256": "9ae2a813695b079cd0a6151b0096af965827f6bf4e64a1ca7f82a7833f64849f"
+    },
+    "docs/PROJECT_CONTEXT.md": {
+      "bytes": 2201,
+      "sha256": "70199b1c773d3d26f1052df250e930c9a54efe5b75d4b8fb2bb229e1762cbdb8"
+    },
+    "reports/Proposal.md": {
+      "bytes": 8834,
+      "sha256": "959dbbd2a0a34975954880b313a58442a6b7469a5d80f08223a44591200349af"
+    }
+  },
+  "study_dataset": {
+    "path": "data/processed/pubg_sample.csv",
+    "records": 18935,
+    "columns": 19,
+    "matches": 200,
+    "bytes": 2108126,
+    "sha256": "9a42ab4c47e2ed07cd95fe5035be577027fb3ae7cfdfd847d2cb7f2f038e048c"
+  },
+  "update_scope": "preparation code, synthetic regression tests and sanitized documentation; existing source-record files unchanged",
+  "validation": {
+    "preparation_regression_tests": "passed",
+    "shared_mode_contract": "passed",
+    "study_dataset_changed": false
+  }
+}

@@ -1,3 +1,5 @@
+> 历史材料：本文件保留早期方向的决策历史；当前数据约定见 [PROJECT_CONTEXT](PROJECT_CONTEXT.md)。
+
 # IBA6101 Project Decisions
 
 All decisions below were confirmed during the 2026-09-12 Grill Me review.
@@ -28,4 +30,3 @@ All decisions below were confirmed during the 2026-09-12 Grill Me review.
 - Whether a prior-rating sensitivity control is useful and clearly separable from trainable behavior.
 - Whether the 5% RMSE improvement gate is attainable without compromising inferential validity.
 - Whether later course announcements add a project rubric, required format, or deadline.
-

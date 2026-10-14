@@ -1,3 +1,5 @@
+> 历史材料：本文件为早期 Squad-FPP 提案；当前课程审阅协议见 [Proposal](pre_model/reports/Proposal.md)。
+
 # Which In-Game Behaviors Should a PUBG Team Train First?
 
 ## Statistical Analysis of Team Behaviors and Final Placement in Squad-FPP Matches
@@ -101,7 +103,7 @@ The report will not translate coefficients into causal improvement, exact traini
 
 ## 9. Go / Revise / Switch gate
 
-The project proceeds to final recommendations only if data integrity passes, at least one behavior block has a stable practically meaningful association, the model improves on the training-mean baseline with a target of at least 5% RMSE improvement on complete-match holdout data, and the findings support a clear training-priority statement with uncertainty. If the gate fails after one evidence-based design revision, the team will re-evaluate the question or switch to Dota 2 or LoL rather than force a PUBG conclusion.
+The project proceeds to final recommendations only if data integrity passes, at least one behavior block has a stable practically meaningful association, the model improves on the training-mean baseline with a target of at least 5% RMSE improvement on complete-match holdout data, and the findings support a clear training-priority statement with uncertainty. If the gate fails after one evidence-based design revision, the team will refine the PUBG research question or report the limitations without forcing a positive conclusion.
 
 ## 10. Planned deliverables
 
@@ -115,4 +117,3 @@ The project proceeds to final recommendations only if data integrity passes, at 
 ## References
 
 Kaggle. *PUBG Finish Placement Prediction*. Local source card: `data/meta/pubg_source.md`; source URL: https://www.kaggle.com/competitions/pubg-finish-placement-prediction.
-

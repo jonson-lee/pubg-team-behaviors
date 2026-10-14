@@ -1,0 +1,6 @@
+.DS_Store
+.Rhistory
+.RData
+.Rproj.user/
+data/raw/
+.preparation-*/

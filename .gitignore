@@ -37,7 +37,8 @@ renv/sandbox/
 # Raw data: large datasets stay local only (see data/ for source cards/README)
 # ---------------------------------------------------------------------------
 data/raw/
-data/processed/
+data/processed/*
+!data/processed/pubg_sample.csv
 *.zip
 
 # ---------------------------------------------------------------------------
@@ -53,3 +54,6 @@ tmp/
 .env
 *.pem
 *.key
+
+# Preparation staging and recovery copies stay local
+**/.preparation-*/
