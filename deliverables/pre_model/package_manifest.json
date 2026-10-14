@@ -1,7 +1,7 @@
 {
-  "export_date": "2026-10-13",
+  "export_date": "2026-10-14",
   "timezone": "Asia/Shanghai",
-  "deliverable_scope": "research design and data preparation review",
+  "deliverable_scope": "research design, data preparation review and PUBG study dataset",
   "chronology_note": "An export of design/preparation materials from a project with a local first-pass analysis; not a preregistration and not a model-results release.",
   "mode": "solo-fpp",
   "source": {
@@ -39,19 +39,18 @@
   ],
   "excluded_artifacts": [
     "raw data",
-    "player-level processed CSV",
     "historical submitted PDFs",
     "model implementation",
     "model result tables and figures"
   ],
   "files": {
     ".gitignore": {
-      "bytes": 81,
-      "sha256": "1a59c977f069f01348c242ffce388a5367bdc03252d09b5b5a31a296fe2a5f95"
+      "bytes": 50,
+      "sha256": "d69a411404e476b43066538a1b56f774765e550db74332873805558aa39bcb24"
     },
     "README.md": {
-      "bytes": 2750,
-      "sha256": "b07526e503a565bcac6c763646565be2b39ff8d7e5d6ad3b33011c74fcaac2f5"
+      "bytes": 3360,
+      "sha256": "8ae9e5124d68729d7b8bb00a2488d0cd8935b63d028662021d8cc0f91284e379"
     },
     "code/prepare_data.R": {
       "bytes": 12859,
@@ -68,6 +67,10 @@
     "data/processed/data_audit.json": {
       "bytes": 3301,
       "sha256": "4f36920ab32a9108320c7e86581e4c862bf19adc96d94a6d3ea061459e82331c"
+    },
+    "data/processed/pubg_sample.csv": {
+      "bytes": 2108126,
+      "sha256": "9a42ab4c47e2ed07cd95fe5035be577027fb3ae7cfdfd847d2cb7f2f038e048c"
     },
     "data/processed/selected_matches.csv": {
       "bytes": 5588,
@@ -89,5 +92,13 @@
       "bytes": 8834,
       "sha256": "959dbbd2a0a34975954880b313a58442a6b7469a5d80f08223a44591200349af"
     }
+  },
+  "study_dataset": {
+    "path": "data/processed/pubg_sample.csv",
+    "records": 18935,
+    "columns": 19,
+    "matches": 200,
+    "bytes": 2108126,
+    "sha256": "9a42ab4c47e2ed07cd95fe5035be577027fb3ae7cfdfd847d2cb7f2f038e048c"
   }
 }

@@ -1,6 +1,6 @@
 # Final Circle · 建模前交付包
 
-整理日期：2026-10-13（Asia/Shanghai）。本次交付范围为**研究设计、数据核验与固定抽样**，供队友审核。
+整理日期：2026-10-14（Asia/Shanghai）。本次交付范围为**研究设计、数据核验、固定抽样与 PUBG 研究样本**，供队友审核。
 
 当前课程方案使用 **Solo-FPP**。GitHub 原有 Squad-FPP 材料属于早期方向，两者的研究单位与变量组不同，请以本包为本次审阅对象。
 
@@ -24,11 +24,22 @@
 | `data/meta/pubg_source.md` | 来源、字段与原始 SHA-256。 |
 | `data/processed/data_audit.json` | 数据准备审计的公开摘要。 |
 | `data/processed/selected_matches.csv` | 200 场匿名比赛标识、划分标签与记录数。 |
+| `data/processed/pubg_sample.csv` | 可直接使用的研究样本，18,935 条记录、19 列，约 2 MB。 |
 | `package_manifest.json` | 导出范围、软件版本及文件校验值。 |
 
-本包不含原始 CSV、玩家样本 CSV、姓名学号、正式提交 PDF、模型代码或结果。缺失响应记录的标识明细已从公开审计摘要移除。
+本包包含 PUBG 研究样本。完整原始 CSV、姓名学号、正式提交 PDF、模型代码或结果未纳入。缺失响应记录的标识明细已从公开审计摘要移除。
 
-## 如何复现数据准备
+## 如何使用研究样本
+
+解压后可直接读取 `data/processed/pubg_sample.csv`。它包含响应、行为字段、组权重和 `split` 标签；分析变量含义见变量字典。训练与留出按 `matchId` 区分，不能重新按记录随机划分。
+
+```r
+sample <- read.csv("data/processed/pubg_sample.csv")
+```
+
+GitHub 仓库根目录的 `data/processed/pubg_sample.csv` 同步保存该样本，文件校验值与本包一致。
+
+## 如何从原始文件复现数据准备
 
 需要 R、`data.table` 和 `jsonlite`。已核验版本为 R 4.4.2、`data.table` 1.16.2、`jsonlite` 1.8.9。
 

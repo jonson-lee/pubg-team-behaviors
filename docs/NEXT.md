@@ -35,5 +35,5 @@
 
 ## Exit gate
 
-Use the four conditions in `PROJECT_CONTEXT.md`. If the gate fails, revise the design once with evidence; if no stable actionable signal remains, switch to Dota 2 or LoL rather than forcing a conclusion.
+Use the four conditions in `PROJECT_CONTEXT.md`. If the gate fails, revise the design once with evidence; if no stable actionable signal remains, refine the PUBG question or report the limited findings without forcing a training recommendation.
 
