@@ -54,3 +54,6 @@ tmp/
 .env
 *.pem
 *.key
+
+# Preparation staging and recovery copies stay local
+**/.preparation-*/

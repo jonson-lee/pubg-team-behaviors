@@ -1,8 +1,18 @@
 # Reproducible match-level sampling of the PUBG training data.
 # Source this file, then call prepare_data(<path to Project>).
 
+validate_sample_mode <- function(data) {
+  if (!is.data.frame(data) || !"matchType" %in% names(data) ||
+      anyNA(data$matchType) || any(data$matchType != "solo-fpp")) {
+    stop("Sample mode contract violation: matchType must be present, non-missing and entirely solo-fpp.",
+         call. = FALSE)
+  }
+  invisible(NULL)
+}
+
 prepare_data <- function(project_dir, sample_size = 200L,
-                         sample_seed = 6101L, split_seed = 6102L) {
+                         sample_seed = 6101L, split_seed = 6102L,
+                         expected_sha256 = "435a78193a0ad2e9aaa7f0cfffa22a8317b320aee81fdd44235e1b37afd28d36") {
   for (package in c("data.table", "jsonlite")) {
     if (!requireNamespace(package, quietly = TRUE)) {
       stop("Required R package is not installed: ", package, call. = FALSE)
@@ -19,6 +29,12 @@ prepare_data <- function(project_dir, sample_size = 200L,
   sample_size <- check_integer(sample_size, "sample_size", 2L)
   sample_seed <- check_integer(sample_seed, "sample_seed")
   split_seed <- check_integer(split_seed, "split_seed")
+  if (!is.character(expected_sha256) || length(expected_sha256) != 1L ||
+      is.na(expected_sha256) || !grepl("^[[:xdigit:]]{64}$", expected_sha256)) {
+    stop("expected_sha256 must be one 64-character SHA-256 checksum.",
+         call. = FALSE)
+  }
+  expected_sha256 <- tolower(expected_sha256)
   if (!is.character(project_dir) || length(project_dir) != 1L ||
       is.na(project_dir) || !dir.exists(project_dir)) {
     stop("project_dir must be an existing directory.", call. = FALSE)
@@ -32,6 +48,11 @@ prepare_data <- function(project_dir, sample_size = 200L,
   # Restore RNG configuration and state so sourcing/calling this module does not
   # alter random choices made by another part of the analysis.
   previous_rng_kind <- RNGkind()
+  if (identical(previous_rng_kind[[2L]], "Box-Muller")) {
+    stop("Cannot preserve the Box-Muller normal cache. ",
+         "Run preparation in a separate Rscript session using default Inversion.",
+         call. = FALSE)
+  }
   had_random_seed <- exists(".Random.seed", envir = .GlobalEnv, inherits = FALSE)
   if (had_random_seed) {
     previous_random_seed <- get(".Random.seed", envir = .GlobalEnv,
@@ -80,13 +101,22 @@ prepare_data <- function(project_dir, sample_size = 200L,
     stop("Could not calculate the source SHA-256 checksum.", call. = FALSE)
   }
   source_sha256 <- tolower(substr(checksum_output, 1L, 64L))
+  if (!identical(source_sha256, expected_sha256)) {
+    stop("Raw training data checksum differs from the expected input. ",
+         "No processed files were written.", call. = FALSE)
+  }
 
   raw <- data.table::fread(
     source_file, select = required_fields,
-    colClasses = list(character = id_fields, integer = integer_fields,
-                      numeric = numeric_fields),
+    colClasses = list(character = id_fields,
+                      numeric = c(integer_fields, numeric_fields)),
     na.strings = c("", "NA"), showProgress = FALSE
   )
+  if (!all(vapply(raw[, c(integer_fields, numeric_fields), with = FALSE],
+                  is.numeric, logical(1)))) {
+    stop("Required numeric/count input columns contain non-numeric values.",
+         call. = FALSE)
+  }
   missing_counts <- vapply(raw, function(column) sum(is.na(column)), integer(1))
   non_target_missing <- missing_counts[setdiff(required_fields, "winPlacePerc")]
   if (any(non_target_missing > 0L)) {
@@ -109,6 +139,17 @@ prepare_data <- function(project_dir, sample_size = 200L,
                  logical(1)))) {
     stop("Required behavior/count fields must be finite and non-negative.",
          call. = FALSE)
+  }
+  invalid_integer_fields <- vapply(raw[, integer_fields, with = FALSE],
+    function(column) any(column != floor(column) | column > .Machine$integer.max),
+    logical(1))
+  if (any(invalid_integer_fields)) {
+    stop("Required count fields must contain integers within R's integer range: ",
+         paste(names(invalid_integer_fields)[invalid_integer_fields], collapse = ", "),
+         ".", call. = FALSE)
+  }
+  for (field in integer_fields) {
+    data.table::set(raw, j = field, value = as.integer(raw[[field]]))
   }
 
   global_match_count <- data.table::uniqueN(raw$matchId)
@@ -177,6 +218,7 @@ prepare_data <- function(project_dir, sample_size = 200L,
   data.table::setorderv(sample_data, c("matchId", "groupId", "Id"))
   sample_data <- as.data.frame(sample_data)
   rownames(sample_data) <- NULL
+  validate_sample_mode(sample_data)
   if (nrow(sample_data) != sum(matches$n_records) ||
       anyNA(sample_data) || length(unique(sample_data$matchId)) != sample_size) {
     stop("Internal sampling integrity check failed.", call. = FALSE)
@@ -196,12 +238,11 @@ prepare_data <- function(project_dir, sample_size = 200L,
          call. = FALSE)
   }
 
-  known_sha256 <- "435a78193a0ad2e9aaa7f0cfffa22a8317b320aee81fdd44235e1b37afd28d36"
   audit <- list(
     source = list(
       path = "data/raw/pubg/train_V2.csv", sha256 = source_sha256,
-      reference_sha256 = known_sha256,
-      matches_reference_sha256 = identical(source_sha256, known_sha256),
+      reference_sha256 = expected_sha256,
+      matches_reference_sha256 = identical(source_sha256, expected_sha256),
       bytes = unname(file.info(source_file)$size),
       n_records = nrow(raw), n_columns = length(header),
       columns = header, read_columns = required_fields,
@@ -253,12 +294,90 @@ prepare_data <- function(project_dir, sample_size = 200L,
   if (!dir.exists(output_dir)) {
     stop("Could not create output directory: ", output_dir, call. = FALSE)
   }
-  data.table::fwrite(sample_data, file.path(output_dir, "pubg_sample.csv"),
+  output_files <- file.path(output_dir, c("pubg_sample.csv", "selected_matches.csv",
+                                         "data_audit.json"))
+  staging_dir <- tempfile(".preparation-", tmpdir = output_dir)
+  if (!dir.create(staging_dir, showWarnings = FALSE)) {
+    stop("Could not create preparation staging directory.", call. = FALSE)
+  }
+  cleanup_staging <- TRUE
+  on.exit({
+    if (cleanup_staging) unlink(staging_dir, recursive = TRUE)
+  }, add = TRUE)
+  staged_files <- file.path(staging_dir, basename(output_files))
+  data.table::fwrite(sample_data, staged_files[[1L]],
                      na = "NA")
-  data.table::fwrite(matches, file.path(output_dir, "selected_matches.csv"),
+  data.table::fwrite(matches, staged_files[[2L]],
                      na = "NA")
-  jsonlite::write_json(audit, file.path(output_dir, "data_audit.json"),
+  jsonlite::write_json(audit, staged_files[[3L]],
                        auto_unbox = TRUE, pretty = TRUE, digits = 16,
                        null = "null")
+
+  # Check the existing targets explicitly: rename can replace a read-only file
+  # when its directory is writable. Only ordinary writable files may be replaced.
+  had_output <- file.exists(output_files)
+  output_links <- Sys.readlink(output_files)
+  linked_output <- !is.na(output_links) & nzchar(output_links)
+  if (any(linked_output) || any(had_output & !file_test("-f", output_files))) {
+    stop("Preparation output targets must be ordinary files, not directories or links.",
+         call. = FALSE)
+  }
+  if (any(file.access(output_files[had_output], mode = 2L) != 0L)) {
+    stop("Existing preparation output files must be writable.", call. = FALSE)
+  }
+  backup_dir <- file.path(staging_dir, "previous")
+  if (!dir.create(backup_dir, showWarnings = FALSE)) {
+    stop("Could not create preparation backup directory.", call. = FALSE)
+  }
+  backup_files <- file.path(backup_dir, basename(output_files))
+  for (i in which(had_output)) {
+    if (!file.copy(output_files[[i]], backup_files[[i]],
+                   copy.mode = TRUE, copy.date = TRUE)) {
+      stop("Could not back up preparation output: ", output_files[[i]],
+           call. = FALSE)
+    }
+    if (!Sys.chmod(staged_files[[i]], file.info(output_files[[i]])$mode)) {
+      stop("Could not preserve preparation output permissions: ", output_files[[i]],
+           call. = FALSE)
+    }
+  }
+
+  # Publish only after all writes and backups succeed. A caught publication
+  # error or interrupt restores the prior files (or removes new targets).
+  attempted <- rep(FALSE, length(output_files))
+  rollback_outputs <- function(condition) suspendInterrupts({
+    # Keep recovery copies if restoration itself fails unexpectedly.
+    cleanup_staging <<- FALSE
+    rollback_failed <- character()
+    for (i in which(attempted)) {
+      restored <- tryCatch({
+        if (had_output[[i]]) {
+          file.copy(backup_files[[i]], output_files[[i]], overwrite = TRUE,
+                    copy.mode = TRUE, copy.date = TRUE)
+        } else {
+          !file.exists(output_files[[i]]) || file.remove(output_files[[i]])
+        }
+      }, error = function(rollback_error) FALSE,
+         interrupt = function(rollback_interrupt) FALSE)
+      if (!isTRUE(restored)) rollback_failed <- c(rollback_failed, output_files[[i]])
+    }
+    if (length(rollback_failed)) {
+      stop("Preparation output publication failed: ", conditionMessage(condition),
+           ". Could not restore: ", paste(rollback_failed, collapse = ", "),
+           ". Recovery copies are retained in ", backup_dir, ".", call. = FALSE)
+    }
+    cleanup_staging <<- TRUE
+    stop("Preparation output publication failed; previous output state restored: ",
+         conditionMessage(condition), call. = FALSE)
+  })
+  tryCatch(suspendInterrupts({
+    for (i in seq_along(output_files)) {
+      attempted[[i]] <- TRUE
+      if (!file.rename(staged_files[[i]], output_files[[i]])) {
+        stop("Could not replace preparation output: ", output_files[[i]],
+             call. = FALSE)
+      }
+    }
+  }), error = rollback_outputs, interrupt = rollback_outputs)
   list(data = sample_data, matches = matches, audit = audit)
 }

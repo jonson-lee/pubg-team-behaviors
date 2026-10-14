@@ -1,3 +1,5 @@
+> 历史材料：本文件保留早期 Squad-FPP 分析方案；当前 Solo-FPP 协议见 [Proposal](../deliverables/pre_model/reports/Proposal.md)。
+
 # IBA6101 Analysis Plan (R)
 
 **Status:** Draft for team review
