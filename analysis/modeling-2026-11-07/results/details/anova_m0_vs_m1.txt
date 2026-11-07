@@ -1,0 +1,9 @@
+Analysis of Variance Table
+
+Model 1: winPlacePerc ~ numGroups
+Model 2: winPlacePerc ~ numGroups + kills + damageDealt
+  Res.Df     RSS Df Sum of Sq      F    Pr(>F)    
+1  15202 1324.08                                  
+2  15200  971.51  2    352.57 2758.1 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1

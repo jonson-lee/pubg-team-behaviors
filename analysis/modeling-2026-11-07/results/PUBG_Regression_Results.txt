@@ -1,0 +1,312 @@
+=== Original Models ===
+
+Call:
+lm(formula = winPlacePerc ~ numGroups, data = train_df)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.49596 -0.25537 -0.00427  0.25548  0.53400 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 0.4269879  0.0523758   8.152 3.84e-16 ***
+numGroups   0.0006966  0.0005631   1.237    0.216    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.2951 on 15202 degrees of freedom
+Multiple R-squared:  0.0001007,	Adjusted R-squared:  3.488e-05 
+F-statistic:  1.53 on 1 and 15202 DF,  p-value: 0.2161
+
+
+Call:
+lm(formula = winPlacePerc ~ numGroups + kills + damageDealt, 
+    data = train_df)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.79299 -0.21131 -0.01247  0.19901  0.60811 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 3.315e-01  4.491e-02   7.381 1.65e-13 ***
+numGroups   5.321e-04  4.825e-04   1.103     0.27    
+kills       3.011e-02  4.194e-03   7.180 7.30e-13 ***
+damageDealt 6.959e-04  3.986e-05  17.460  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.2528 on 15200 degrees of freedom
+Multiple R-squared:  0.2663,	Adjusted R-squared:  0.2662 
+F-statistic:  1839 on 3 and 15200 DF,  p-value: < 2.2e-16
+
+
+Call:
+lm(formula = winPlacePerc ~ numGroups + walkDistance + boosts + 
+    heals, data = train_df)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.32370 -0.11585  0.00968  0.11495  0.55949 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  1.710e-02  2.870e-02   0.596    0.551    
+numGroups    2.777e-03  3.078e-04   9.021  < 2e-16 ***
+walkDistance 1.944e-04  1.627e-06 119.446  < 2e-16 ***
+boosts       2.655e-02  1.006e-03  26.399  < 2e-16 ***
+heals        4.849e-03  6.315e-04   7.679  1.7e-14 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.1612 on 15199 degrees of freedom
+Multiple R-squared:  0.7017,	Adjusted R-squared:  0.7016 
+F-statistic:  8937 on 4 and 15199 DF,  p-value: < 2.2e-16
+
+
+Call:
+lm(formula = winPlacePerc ~ numGroups + kills + damageDealt + 
+    walkDistance + boosts + heals, data = train_df)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.29914 -0.11564  0.00792  0.11325  0.59000 
+
+Coefficients:
+               Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   1.839e-02  2.830e-02   0.650   0.5159    
+numGroups     2.633e-03  3.036e-04   8.672  < 2e-16 ***
+kills        -5.672e-03  2.662e-03  -2.131   0.0331 *  
+damageDealt   2.654e-04  2.525e-05  10.509  < 2e-16 ***
+walkDistance  1.896e-04  1.619e-06 117.105  < 2e-16 ***
+boosts        1.802e-02  1.083e-03  16.637  < 2e-16 ***
+heals         4.275e-03  6.230e-04   6.862 7.06e-12 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.1589 on 15197 degrees of freedom
+Multiple R-squared:  0.7102,	Adjusted R-squared:  0.7101 
+F-statistic:  6208 on 6 and 15197 DF,  p-value: < 2.2e-16
+
+
+=== Extended Models ===
+
+Call:
+lm(formula = winPlacePerc ~ numGroups + kills + walkDistance + 
+    boosts + heals, data = train_df)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.30389 -0.11587  0.00788  0.11385  0.58263 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  2.706e-02  2.839e-02   0.953     0.34    
+numGroups    2.604e-03  3.046e-04   8.547  < 2e-16 ***
+kills        1.989e-02  1.085e-03  18.330  < 2e-16 ***
+walkDistance 1.905e-04  1.623e-06 117.381  < 2e-16 ***
+boosts       1.860e-02  1.085e-03  17.142  < 2e-16 ***
+heals        4.469e-03  6.250e-04   7.150 9.06e-13 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.1595 on 15198 degrees of freedom
+Multiple R-squared:  0.7081,	Adjusted R-squared:  0.708 
+F-statistic:  7375 on 5 and 15198 DF,  p-value: < 2.2e-16
+
+
+Call:
+lm(formula = winPlacePerc ~ numGroups + damageDealt + walkDistance + 
+    boosts + heals, data = train_df)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.29908 -0.11573  0.00775  0.11302  0.58972 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  2.046e-02  2.829e-02   0.723    0.469    
+numGroups    2.619e-03  3.035e-04   8.628  < 2e-16 ***
+damageDealt  2.162e-04  1.026e-05  21.077  < 2e-16 ***
+walkDistance 1.896e-04  1.620e-06 117.082  < 2e-16 ***
+boosts       1.775e-02  1.076e-03  16.500  < 2e-16 ***
+heals        4.293e-03  6.230e-04   6.890 5.78e-12 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.1589 on 15198 degrees of freedom
+Multiple R-squared:  0.7102,	Adjusted R-squared:  0.7101 
+F-statistic:  7447 on 5 and 15198 DF,  p-value: < 2.2e-16
+
+
+Call:
+lm(formula = winPlacePerc ~ numGroups + kills + walkDistance + 
+    boosts + heals + I(kills^2), data = train_df)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.30916 -0.11349  0.00423  0.10999  0.59514 
+
+Coefficients:
+               Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   0.0140031  0.0278875   0.502    0.616    
+numGroups     0.0026205  0.0002992   8.759  < 2e-16 ***
+kills         0.0558675  0.0018564  30.094  < 2e-16 ***
+walkDistance  0.0001873  0.0000016 117.055  < 2e-16 ***
+boosts        0.0184862  0.0010658  17.345  < 2e-16 ***
+heals         0.0037590  0.0006145   6.117 9.75e-10 ***
+I(kills^2)   -0.0058732  0.0002482 -23.668  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.1566 on 15197 degrees of freedom
+Multiple R-squared:  0.7185,	Adjusted R-squared:  0.7184 
+F-statistic:  6465 on 6 and 15197 DF,  p-value: < 2.2e-16
+
+
+Call:
+lm(formula = winPlacePerc ~ numGroups + kills + damageDealt + 
+    walkDistance + boosts + heals + I(kills^2), data = train_df)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.30474 -0.11298  0.00391  0.10855  0.60163 
+
+Coefficients:
+               Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   6.333e-03  2.781e-02   0.228     0.82    
+numGroups     2.646e-03  2.983e-04   8.872  < 2e-16 ***
+kills         3.200e-02  3.074e-03  10.410  < 2e-16 ***
+damageDealt   2.414e-04  2.483e-05   9.722  < 2e-16 ***
+walkDistance  1.865e-04  1.597e-06 116.815  < 2e-16 ***
+boosts        1.795e-02  1.064e-03  16.873  < 2e-16 ***
+heals         3.595e-03  6.128e-04   5.866 4.56e-09 ***
+I(kills^2)   -5.774e-03  2.476e-04 -23.318  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.1561 on 15196 degrees of freedom
+Multiple R-squared:  0.7202,	Adjusted R-squared:  0.7201 
+F-statistic:  5589 on 7 and 15196 DF,  p-value: < 2.2e-16
+
+
+=== ANOVA ===
+Analysis of Variance Table
+
+Model 1: winPlacePerc ~ numGroups
+Model 2: winPlacePerc ~ numGroups + kills + damageDealt
+  Res.Df     RSS Df Sum of Sq      F    Pr(>F)    
+1  15202 1324.08                                  
+2  15200  971.51  2    352.57 2758.1 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Analysis of Variance Table
+
+Model 1: winPlacePerc ~ numGroups
+Model 2: winPlacePerc ~ numGroups + walkDistance + boosts + heals
+  Res.Df     RSS Df Sum of Sq     F    Pr(>F)    
+1  15202 1324.08                                 
+2  15199  395.04  3    929.04 11915 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Analysis of Variance Table
+
+Model 1: winPlacePerc ~ numGroups + kills + damageDealt
+Model 2: winPlacePerc ~ numGroups + kills + damageDealt + walkDistance + 
+    boosts + heals
+  Res.Df    RSS Df Sum of Sq      F    Pr(>F)    
+1  15200 971.51                                  
+2  15197 383.70  3    587.81 7760.3 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Analysis of Variance Table
+
+Model 1: winPlacePerc ~ numGroups + walkDistance + boosts + heals
+Model 2: winPlacePerc ~ numGroups + kills + damageDealt + walkDistance + 
+    boosts + heals
+  Res.Df    RSS Df Sum of Sq      F    Pr(>F)    
+1  15199 395.04                                  
+2  15197 383.70  2    11.333 224.44 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Analysis of Variance Table
+
+Model 1: winPlacePerc ~ numGroups + kills + damageDealt + walkDistance + 
+    boosts + heals
+Model 2: winPlacePerc ~ numGroups + kills + damageDealt + walkDistance + 
+    boosts + heals + I(kills^2)
+  Res.Df    RSS Df Sum of Sq      F    Pr(>F)    
+1  15197 383.70                                  
+2  15196 370.45  1    13.255 543.72 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Analysis of Variance Table
+
+Model 1: winPlacePerc ~ numGroups + kills + walkDistance + boosts + heals
+Model 2: winPlacePerc ~ numGroups + kills + walkDistance + boosts + heals + 
+    I(kills^2)
+  Res.Df    RSS Df Sum of Sq      F    Pr(>F)    
+1  15198 386.49                                  
+2  15197 372.75  1    13.739 560.15 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+=== Correlation Matrix ===
+             kills damageDealt walkDistance boosts  heals numGroups
+kills        1.000       0.945        0.466  0.590  0.323     0.008
+damageDealt  0.945       1.000        0.471  0.586  0.329     0.003
+walkDistance 0.466       0.471        1.000  0.652  0.408    -0.036
+boosts       0.590       0.586        0.652  1.000  0.488    -0.023
+heals        0.323       0.329        0.408  0.488  1.000    -0.020
+numGroups    0.008       0.003       -0.036 -0.023 -0.020     1.000
+winPlacePerc 0.502       0.514        0.825  0.640  0.405     0.010
+             winPlacePerc
+kills               0.502
+damageDealt         0.514
+walkDistance        0.825
+boosts              0.640
+heals               0.405
+numGroups           0.010
+winPlacePerc        1.000
+
+=== VIF ===
+   numGroups        kills  damageDealt walkDistance       boosts        heals 
+    1.002400     9.480180     9.444387     1.806545     2.311206     1.340168 
+   numGroups        kills walkDistance       boosts        heals 
+    1.002319     1.564157     1.801752     2.305024     1.338995 
+   numGroups  damageDealt walkDistance       boosts        heals 
+    1.001966     1.558251     1.806494     2.280742     1.339922 
+
+=== Auxiliary Regression ===
+
+Call:
+lm(formula = damageDealt ~ kills + numGroups + walkDistance + 
+    boosts + heals, data = train_df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-274.16  -24.47  -20.59   25.46  527.49 
+
+Coefficients:
+               Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  32.6887608  9.0881324   3.597 0.000323 ***
+kills        96.3279551  0.3473327 277.336  < 2e-16 ***
+numGroups    -0.1080601  0.0975210  -1.108 0.267849    
+walkDistance  0.0033035  0.0005196   6.358 2.10e-10 ***
+boosts        2.2179006  0.3473986   6.384 1.77e-10 ***
+heals         0.7299803  0.2000555   3.649 0.000264 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 51.05 on 15198 degrees of freedom
+Multiple R-squared:  0.8941,	Adjusted R-squared:  0.8941 
+F-statistic: 2.567e+04 on 5 and 15198 DF,  p-value: < 2.2e-16
+
+
+=== Test Results ===
+              Model    N      RMSE       MAE   Test_R2 Out_of_Range
+5      m3_quadratic 3731 0.1521433 0.1225692 0.7336629          204
+4 m_kills_quadratic 3731 0.1528796 0.1229966 0.7310789          207
+1                m3 3731 0.1543246 0.1248642 0.7259712          206
+3        m_no_kills 3731 0.1543778 0.1248611 0.7257820          208
+2       m_no_damage 3731 0.1550535 0.1252847 0.7233764          206

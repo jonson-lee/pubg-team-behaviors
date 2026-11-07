@@ -1,0 +1,24 @@
+
+Call:
+lm(formula = damageDealt ~ kills + numGroups + walkDistance + 
+    boosts + heals, data = train_df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-274.16  -24.47  -20.59   25.46  527.49 
+
+Coefficients:
+               Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  32.6887608  9.0881324   3.597 0.000323 ***
+kills        96.3279551  0.3473327 277.336  < 2e-16 ***
+numGroups    -0.1080601  0.0975210  -1.108 0.267849    
+walkDistance  0.0033035  0.0005196   6.358 2.10e-10 ***
+boosts        2.2179006  0.3473986   6.384 1.77e-10 ***
+heals         0.7299803  0.2000555   3.649 0.000264 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 51.05 on 15198 degrees of freedom
+Multiple R-squared:  0.8941,	Adjusted R-squared:  0.8941 
+F-statistic: 2.567e+04 on 5 and 15198 DF,  p-value: < 2.2e-16
+

@@ -1,0 +1,24 @@
+# macOS and editor files
+.DS_Store
+._*
+.Rproj.user/
+.vscode/
+.idea/
+*~
+
+# Local R workspaces and console history
+.RData
+*.RData
+.Rhistory
+*.Rhistory
+.Rapp.history
+Rplots.pdf
+
+# New runs remain local; archived results and models are tracked
+results/reproduced/
+
+# Local credentials
+.Renviron
+.env
+.env.*
+!.env.example

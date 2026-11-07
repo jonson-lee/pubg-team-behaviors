@@ -1,0 +1,25 @@
+
+Call:
+lm(formula = winPlacePerc ~ numGroups + kills + walkDistance + 
+    boosts + heals + I(kills^2), data = train_df)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.30916 -0.11349  0.00423  0.10999  0.59514 
+
+Coefficients:
+               Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   0.0140031  0.0278875   0.502    0.616    
+numGroups     0.0026205  0.0002992   8.759  < 2e-16 ***
+kills         0.0558675  0.0018564  30.094  < 2e-16 ***
+walkDistance  0.0001873  0.0000016 117.055  < 2e-16 ***
+boosts        0.0184862  0.0010658  17.345  < 2e-16 ***
+heals         0.0037590  0.0006145   6.117 9.75e-10 ***
+I(kills^2)   -0.0058732  0.0002482 -23.668  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.1566 on 15197 degrees of freedom
+Multiple R-squared:  0.7185,	Adjusted R-squared:  0.7184 
+F-statistic:  6465 on 6 and 15197 DF,  p-value: < 2.2e-16
+

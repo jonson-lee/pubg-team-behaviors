@@ -1,0 +1,15 @@
+Single term deletions
+
+Model:
+winPlacePerc ~ numGroups + kills + damageDealt + walkDistance + 
+    boosts + heals
+             Df Sum of Sq    RSS    AIC    F value    Pr(>F)    
+<none>                    383.70 -55928                         
+numGroups     1      1.90 385.60 -55855    75.2027 < 2.2e-16 ***
+kills         1      0.11 383.82 -55926     4.5408   0.03311 *  
+damageDealt   1      2.79 386.49 -55820   110.4476 < 2.2e-16 ***
+walkDistance  1    346.25 729.95 -46152 13713.6271 < 2.2e-16 ***
+boosts        1      6.99 390.69 -55656   276.8058 < 2.2e-16 ***
+heals         1      1.19 384.89 -55883    47.0844 7.062e-12 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1

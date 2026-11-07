@@ -1,0 +1,19 @@
+
+Call:
+lm(formula = winPlacePerc ~ numGroups, data = train_df)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.49596 -0.25537 -0.00427  0.25548  0.53400 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 0.4269879  0.0523758   8.152 3.84e-16 ***
+numGroups   0.0006966  0.0005631   1.237    0.216    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.2951 on 15202 degrees of freedom
+Multiple R-squared:  0.0001007,	Adjusted R-squared:  3.488e-05 
+F-statistic:  1.53 on 1 and 15202 DF,  p-value: 0.2161
+
