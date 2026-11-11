@@ -1,6 +1,6 @@
 # 当前课程方案审阅入口
 
-本次审阅材料为 **Solo-FPP 的研究设计与数据准备**，见 [建模前交付包](deliverables/pre_model/README.md)。包内提供提案、变量字典、数据核验、固定比赛名单和准备代码。
+本次审阅材料为 **Solo-FPP 的研究设计与数据准备**，见 [建模前交付包](deliverables/pre_model/README.md)。包内提供提案、变量字典、数据核验、固定比赛名单和准备代码。项目变化见 [更新日志](CHANGELOG.md)。
 
 以下正文保留仓库早期 Squad-FPP 方向；本次课程方案以交付包中的 Solo-FPP 协议为准。研究设计与准备材料的导出范围、时间说明和校验值见包内 README 与 manifest。
 
