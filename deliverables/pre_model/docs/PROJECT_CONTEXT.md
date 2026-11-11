@@ -1,6 +1,6 @@
 # 建模前审阅约定
 
-更新日期：2026-10-13（Asia/Shanghai）。完整分析协议见 [Proposal.md](../reports/Proposal.md)。
+更新日期：2026-10-14（Asia/Shanghai）。完整分析协议见 [Proposal.md](../reports/Proposal.md)。
 
 ## 范围与单位
 
@@ -23,3 +23,8 @@ Final Circle 的 IBA6101 项目研究 `solo-fpp` 赛后行为与最终名次的�
 | 行为变量使用 log1p 作敏感性检查 | 保留零值并检查函数形式；保留预定主方案。 |
 
 数据来源见 [pubg_source.md](../data/meta/pubg_source.md)，准备审计见 [PREPARATION_REPORT.md](PREPARATION_REPORT.md)。本次范围与文件校验见包根目录的 `package_manifest.json`。
+
+
+准备模块共用固定 Solo-FPP 模式校验；计数字段须为合法整数，来源哈希必须匹配核验输入。输出先暂存与备份，发布错误或 R 中断时恢复原状态；恢复失败保留备份路径。准备测试仅用合成记录，不需要模型代码或结果。
+
+既有公开样本、比赛名单和脱敏审计保持不变。数据再分发依据仍待确认，完整原始文件、排除记录的标识明细及成员资料不加入本次更新。

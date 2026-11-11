@@ -1,42 +1,5 @@
-# code/ — Reproducible R analysis pipeline
+# 代码入口
 
-The project analysis is implemented in **R**. Method choices are documented in
-`docs/ANALYSIS_PLAN_R.md`; do not change features or model order in code before updating that
-document.
+当前 Solo-FPP 数据准备与合成回归测试在 [deliverables/pre_model/code](../deliverables/pre_model/README.md)，该入口不加载模型实现或分析成果。
 
-## Setup
-
-```r
-# from the repository root
-Rscript code/00_setup.R      # install/load required packages
-```
-
-Optional (recommended for reproducibility):
-
-```r
-renv::init()                 # creates renv.lock so every team member matches versions
-```
-
-## Run order (from the repository root)
-
-```powershell
-Rscript code/01_data_audit.R   # M1: filter, aggregate to teams, integrity checks
-Rscript code/02_eda.R          # M2: descriptive stats, figures, feature freeze
-Rscript code/03_models.R       # M3/M4: nested models, diagnostics, validation
-```
-
-Raw CSVs are read-only and live in `data/raw/pubg/` (git-ignored). Derived tables are written to
-`data/processed/`; reports and figures to `reports/`.
-
-## Layout
-
-```
-code/
-  R/config.R        paths, behaviour-block column groups, modes
-  R/io.R            read + filter helpers
-  R/audit.R         team aggregation + integrity checks
-  00_setup.R        install/load packages
-  01_data_audit.R   milestone M1
-  02_eda.R          milestone M2
-  03_models.R       milestones M3/M4
-```
+本目录的 `00_setup.R`、`01_data_audit.R`、`02_eda.R`、`03_models.R` 和 `R/` 保留早期 Squad-FPP 流程，不能作为当前课程方案的准备入口。

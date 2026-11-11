@@ -1,3 +1,5 @@
+> 历史材料：本文件为早期 Squad-FPP 提案；当前课程审阅协议见 [Proposal](pre_model/reports/Proposal.md)。
+
 # Which In-Game Behaviors Should a PUBG Team Train First?
 
 ## Statistical Analysis of Team Behaviors and Final Placement in Squad-FPP Matches
@@ -115,4 +117,3 @@ The project proceeds to final recommendations only if data integrity passes, at 
 ## References
 
 Kaggle. *PUBG Finish Placement Prediction*. Local source card: `data/meta/pubg_source.md`; source URL: https://www.kaggle.com/competitions/pubg-finish-placement-prediction.
-

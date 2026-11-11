@@ -45,24 +45,28 @@
   ],
   "files": {
     ".gitignore": {
-      "bytes": 50,
-      "sha256": "d69a411404e476b43066538a1b56f774765e550db74332873805558aa39bcb24"
+      "bytes": 66,
+      "sha256": "61aaec98b64b5140d58f316ec1274eafa52daffae44e38851f968748d28daae7"
     },
     "README.md": {
-      "bytes": 3360,
-      "sha256": "8ae9e5124d68729d7b8bb00a2488d0cd8935b63d028662021d8cc0f91284e379"
+      "bytes": 2008,
+      "sha256": "49ecdb88ab4bdf31e1622f42cd500fc54dba9ca860848533ecd1568b1ace07f7"
     },
     "code/prepare_data.R": {
-      "bytes": 12859,
-      "sha256": "10673bc195a268ed95bcd8cb2feed6fdf75af15532d000eb5931945023b5d5dc"
+      "bytes": 18240,
+      "sha256": "215cdd22e16fdd8ec68544c20bf439f08c28182c04774bb27d9adbbd0f421e7a"
     },
     "code/run_preparation.R": {
-      "bytes": 1607,
-      "sha256": "ca4dd3801d752b1e71232afc2b71fd8752e1d6a11a319971f161757d9ab487b2"
+      "bytes": 1432,
+      "sha256": "14af44f35f1110463cb228b2d78cdacbd92d4527accc6eed6e61b640752ce55a"
+    },
+    "code/tests/test_preparation.R": {
+      "bytes": 18663,
+      "sha256": "bf5ddd1a16625ee9a2faab8c82714190c0bfdfc2b7bb6f2eababe880bf35c8b7"
     },
     "data/meta/pubg_source.md": {
-      "bytes": 3128,
-      "sha256": "4de3ec35bb8da2899aedc91d842bbe5f6b30d213d3a6d69a6fd64b5a3cb5fcc7"
+      "bytes": 3985,
+      "sha256": "0cf08ea5c0ea825d2b65a88145356b70c9d80b240a47e745f9342a277e4a635e"
     },
     "data/processed/data_audit.json": {
       "bytes": 3301,
@@ -77,16 +81,16 @@
       "sha256": "04699ba2baa8b89a017fb2c2558e50fdea55e076557ea5a145633d4b68d730df"
     },
     "docs/DATA_DICTIONARY.md": {
-      "bytes": 1806,
-      "sha256": "6adecf1446be50873d53adf25e28dc947615a2efea7da2706d9a6dfe7fb22b12"
+      "bytes": 1827,
+      "sha256": "7d8ac1603d2061184e5e528ec4f7ff9e16b5f7b9c5402bca89ab8e15080d0fda"
     },
     "docs/PREPARATION_REPORT.md": {
-      "bytes": 2342,
-      "sha256": "17d60985233a3cb4ab07422a1b4594dc50911204cabb4743cf5e262763ecad71"
+      "bytes": 2937,
+      "sha256": "9ae2a813695b079cd0a6151b0096af965827f6bf4e64a1ca7f82a7833f64849f"
     },
     "docs/PROJECT_CONTEXT.md": {
-      "bytes": 1718,
-      "sha256": "9cf5d61a92a41238f337fd60f6c153c72b5014c1164c12d952801d1bc5c2addc"
+      "bytes": 2201,
+      "sha256": "70199b1c773d3d26f1052df250e930c9a54efe5b75d4b8fb2bb229e1762cbdb8"
     },
     "reports/Proposal.md": {
       "bytes": 8834,
@@ -100,5 +104,11 @@
     "matches": 200,
     "bytes": 2108126,
     "sha256": "9a42ab4c47e2ed07cd95fe5035be577027fb3ae7cfdfd847d2cb7f2f038e048c"
+  },
+  "update_scope": "preparation code, synthetic regression tests and sanitized documentation; existing source-record files unchanged",
+  "validation": {
+    "preparation_regression_tests": "passed",
+    "shared_mode_contract": "passed",
+    "study_dataset_changed": false
   }
 }

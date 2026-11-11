@@ -14,9 +14,6 @@ source(file.path(project_dir, "code", "prepare_data.R"))
 
 message("Preparing the fixed 200-match solo-fpp sample...")
 prepared <- prepare_data(project_dir)
-if (!isTRUE(prepared$audit$source$matches_reference_sha256)) {
-  stop("Raw training data checksum differs from the reviewed input; inspect data/processed/data_audit.json.")
-}
 matches <- prepared$matches
 n_train <- sum(matches$split == "train")
 n_test <- sum(matches$split == "test")
