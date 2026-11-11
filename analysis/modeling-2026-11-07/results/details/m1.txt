@@ -1,0 +1,22 @@
+
+Call:
+lm(formula = winPlacePerc ~ numGroups + kills + damageDealt, 
+    data = train_df)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.79299 -0.21131 -0.01247  0.19901  0.60811 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 3.315e-01  4.491e-02   7.381 1.65e-13 ***
+numGroups   5.321e-04  4.825e-04   1.103     0.27    
+kills       3.011e-02  4.194e-03   7.180 7.30e-13 ***
+damageDealt 6.959e-04  3.986e-05  17.460  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.2528 on 15200 degrees of freedom
+Multiple R-squared:  0.2663,	Adjusted R-squared:  0.2662 
+F-statistic:  1839 on 3 and 15200 DF,  p-value: < 2.2e-16
+

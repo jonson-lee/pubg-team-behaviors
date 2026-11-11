@@ -1,0 +1,10 @@
+Analysis of Variance Table
+
+Model 1: winPlacePerc ~ numGroups + kills + walkDistance + boosts + heals
+Model 2: winPlacePerc ~ numGroups + kills + walkDistance + boosts + heals + 
+    I(kills^2)
+  Res.Df    RSS Df Sum of Sq      F    Pr(>F)    
+1  15198 386.49                                  
+2  15197 372.75  1    13.739 560.15 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1

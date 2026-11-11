@@ -1,0 +1,12 @@
+                Model  Coefficient   Std_Error      P_value Significance
+      Full Model (m3) -0.005671764 0.002661652 3.311187e-02            *
+ Without walkDistance -0.004029318 0.003670970 2.723892e-01             
+       Without boosts -0.000587731 0.002667936 8.256450e-01             
+        Without heals -0.005919128 0.002665440 2.638636e-02            *
+  Without damageDealt  0.019889047 0.001085029 2.982604e-74          ***
+ Coefficient_Star
+       -0.005672*
+        -0.004029
+        -0.000588
+       -0.005919*
+      0.019889***

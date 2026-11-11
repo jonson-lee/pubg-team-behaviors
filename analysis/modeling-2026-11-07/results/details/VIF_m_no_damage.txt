@@ -1,0 +1,2 @@
+   numGroups        kills walkDistance       boosts        heals 
+    1.002319     1.564157     1.801752     2.305024     1.338995 

@@ -1,0 +1,2 @@
+   numGroups  damageDealt walkDistance       boosts        heals 
+    1.001966     1.558251     1.806494     2.280742     1.339922 

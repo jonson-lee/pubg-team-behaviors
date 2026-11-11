@@ -1,0 +1,24 @@
+
+Call:
+lm(formula = formula(m3), data = train_df[cd <= threshold, ])
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.37934 -0.10999  0.00459  0.10327  0.53967 
+
+Coefficients:
+               Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  -1.333e-01  2.837e-02  -4.698 2.65e-06 ***
+numGroups     3.970e-03  3.041e-04  13.052  < 2e-16 ***
+kills        -5.194e-03  2.606e-03  -1.993   0.0463 *  
+damageDealt   2.881e-04  2.455e-05  11.737  < 2e-16 ***
+walkDistance  2.285e-04  1.653e-06 138.220  < 2e-16 ***
+boosts        1.251e-02  1.108e-03  11.297  < 2e-16 ***
+heals         5.312e-03  7.071e-04   7.512 6.18e-14 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.1413 on 14512 degrees of freedom
+Multiple R-squared:  0.7599,	Adjusted R-squared:  0.7598 
+F-statistic:  7656 on 6 and 14512 DF,  p-value: < 2.2e-16
+

@@ -1,0 +1,16 @@
+             kills damageDealt walkDistance boosts  heals numGroups
+kills        1.000       0.945        0.466  0.590  0.323     0.008
+damageDealt  0.945       1.000        0.471  0.586  0.329     0.003
+walkDistance 0.466       0.471        1.000  0.652  0.408    -0.036
+boosts       0.590       0.586        0.652  1.000  0.488    -0.023
+heals        0.323       0.329        0.408  0.488  1.000    -0.020
+numGroups    0.008       0.003       -0.036 -0.023 -0.020     1.000
+winPlacePerc 0.502       0.514        0.825  0.640  0.405     0.010
+             winPlacePerc
+kills               0.502
+damageDealt         0.514
+walkDistance        0.825
+boosts              0.640
+heals               0.405
+numGroups           0.010
+winPlacePerc        1.000

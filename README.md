@@ -121,6 +121,13 @@ the focus is on the project itself.
 
 > 小组课程项目。为保护隐私，仓库不包含成员姓名与学号，内容仅聚焦项目本身。
 
+
+## November 7 modeling module | 11 月 7 日建模
+
+The [player-level modeling module](analysis/modeling-2026-11-07/README.md) includes the saved analysis sample, runnable R scripts, model objects, and regression and test-set results. It preserves the original player-level analysis and train/test labels. The team-level analysis pipeline remains a separate part of this project.
+
+[玩家层面建模模块](analysis/modeling-2026-11-07/README.md)包含分析样本、可运行的 R 脚本、模型文件、回归结果和测试集表现，沿用本次建模已有的玩家记录和训练测试标签。仓库原有的队伍层面分析另行保留。
+
 ## Acknowledgements | 致谢
 
 PUBG Finish Placement Prediction dataset (Kaggle); built for the IBA6101 course.

@@ -1,0 +1,2 @@
+  numGroups       kills damageDealt 
+   1.000281    9.298730    9.298181 
