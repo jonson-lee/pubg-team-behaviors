@@ -101,5 +101,5 @@ Proceed to final recommendations only if all four conditions hold:
 3. The model improves on the training-mean baseline on a complete-match holdout, with a target of at least 5% RMSE improvement.
 4. The result supports at least one clear training-priority statement with uncertainty and limitations attached.
 
-If these conditions fail, first revise transformations or stratification. If no stable actionable signal remains, switch to Dota 2 or LoL and re-evaluate the project question rather than forcing a PUBG conclusion.
+If these conditions fail, first revise transformations or stratification. If no stable actionable signal remains, refine the PUBG research question or report the limitations without forcing a positive conclusion.
 

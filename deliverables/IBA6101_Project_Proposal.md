@@ -101,7 +101,7 @@ The report will not translate coefficients into causal improvement, exact traini
 
 ## 9. Go / Revise / Switch gate
 
-The project proceeds to final recommendations only if data integrity passes, at least one behavior block has a stable practically meaningful association, the model improves on the training-mean baseline with a target of at least 5% RMSE improvement on complete-match holdout data, and the findings support a clear training-priority statement with uncertainty. If the gate fails after one evidence-based design revision, the team will re-evaluate the question or switch to Dota 2 or LoL rather than force a PUBG conclusion.
+The project proceeds to final recommendations only if data integrity passes, at least one behavior block has a stable practically meaningful association, the model improves on the training-mean baseline with a target of at least 5% RMSE improvement on complete-match holdout data, and the findings support a clear training-priority statement with uncertainty. If the gate fails after one evidence-based design revision, the team will refine the PUBG research question or report the limitations without forcing a positive conclusion.
 
 ## 10. Planned deliverables
 
