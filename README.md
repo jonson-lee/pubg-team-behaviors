@@ -1,3 +1,16 @@
+# Final Circle PUBG 课程项目
+
+当前研究使用 Solo-FPP 赛后行为记录，比较战斗与移动恢复变量对最终名次的条件解释增量。固定样本包含 200 场比赛及 18,935 条记录。通过 Kaggle 获取原始输入后，按复现说明在本地生成研究样本。
+
+- [数据准备与复现步骤](deliverables/pre_model/README.md)
+- [研究协议](deliverables/pre_model/reports/Proposal.md)
+- [团队建模结果](deliverables/modeling/Modeling_Review.md)
+- [H3 单一战斗指标敏感性结果](deliverables/modeling/H3_Sensitivity_Summary.md)
+
+以下为早期 Squad-FPP 研究记录。
+
+---
+
 # Which In-Game Behaviors Should a PUBG Team Train First?
 
 > Statistical analysis of team behaviors and final placement in Squad-FPP matches.
